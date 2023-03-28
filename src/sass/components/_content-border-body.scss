@@ -1,0 +1,13 @@
+@use '../abstracts/mixins' as mxn;
+
+.content-border-body {
+	@include mxn.border-content;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 2.4rem;
+	@include mxn.mq(large) {
+		margin-inline: 9.5rem;
+	}
+}

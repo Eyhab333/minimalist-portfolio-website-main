@@ -1,0 +1,116 @@
+@use '../abstracts/mixins' as mxn;
+
+.grid {
+	display: grid;
+	gap: var(--grid-gap, 1em);
+}
+
+.primary-header-grid {
+	display: grid;
+	gap: 2.4rem;
+
+	&__image img {
+		margin-inline: auto;
+	}
+
+	@include mxn.mq(small) {
+		&__image,
+		&__content {
+			grid-column: 1 / 1;
+			grid-row: 1 / 1;
+		}
+
+		&__content {
+			place-self: end start;
+		}
+	}
+}
+
+.content-grid {
+	--content-flex-gap: 3.2rem;
+	display: grid;
+	gap: var(--content-flex-gap);
+	@include mxn.mq(medium) {
+		--content-flex-gap: 7rem;
+		grid-auto-flow: column;
+		grid-template-columns: auto 1fr;
+
+		&[data-reversed] {
+			grid-template-columns: 1fr auto;
+
+			& > *:last-child {
+				grid-column: 1;
+			}
+		}
+	}
+
+	@include mxn.mq(large) {
+		--content-flex-gap: 3rem;
+	}
+}
+
+.projects-grid {
+	--projects-gap: 7.2rem;
+	display: grid;
+	gap: var(--projects-gap);
+	@include mxn.mq(medium) {
+		--projects-gap: 8rem;
+	}
+}
+
+.project-header-grid {
+	--project-header-gap: 2.4rem;
+	display: grid;
+	place-items: start;
+	gap: var(--project-header-gap);
+	grid-template-areas:
+		'heading'
+		'description'
+		'tools'
+		'button';
+	@include mxn.mq(medium) {
+		--project-header-gap: 1.6rem;
+		grid-template-areas:
+			'heading description'
+			'tools description'
+			'button description';
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include mxn.mq(large) {
+		--project-header-gap: 2.4rem;
+		grid-template-areas:
+			'heading'
+			'description'
+			'tools'
+			'button';
+		grid-template-columns: 1fr;
+	}
+
+	& [data-area='heading'] {
+		grid-area: heading;
+	}
+
+	& [data-area='description'] {
+		grid-area: description;
+	}
+
+	& [data-area='tools'] {
+		grid-area: tools;
+	}
+
+	& [data-area='button'] {
+		grid-area: button;
+	}
+}
+
+.contact-grid {
+	--contact-gap: 2.4rem;
+	display: grid;
+	align-items: start;
+	gap: var(--contact-gap);
+	@include mxn.mq(large) {
+		--contact-gap: 12.5rem;
+		grid-template-columns: 35rem 1fr;
+	}
+}

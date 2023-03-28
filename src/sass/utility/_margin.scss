@@ -1,0 +1,24 @@
+@use '../abstracts/mixins' as mxn;
+
+.margin-block-about {
+	margin-block: clamp(9.6rem, 15vw, 15rem);
+}
+
+.mx-auto {
+	margin-inline: auto;
+}
+
+.margin-inline-start-auto-md {
+	@include mxn.mq(medium) {
+		margin-inline-start: auto;
+	}
+}
+
+.margin-block-end-preview {
+	margin-block-end: clamp(4rem, -10rem + 20vw, 11.5rem);
+}
+
+.margin-block-contact {
+	margin-block-start: clamp(3.2rem, 4vw, 4.8rem);
+	margin-block-end: clamp(8rem, 12.5vw, 11rem);
+}
